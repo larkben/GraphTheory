@@ -23,8 +23,9 @@ public:
 
 	// Functions
 	void Gfill(); // Asks the user to fill in the vertices and their names;
-	void Dfind(string G); // finds the degree of a entered vertice
-	void DfindAll(); // outputs all vertices and their degrees
+	int Dfind(string G); // finds the degree of a entered vertice
+	void OutputMatrixN(); // outputs all vertices and their degrees (uses numbers)
+	void OutputMatrixA(); // outputs all vertices and their degrees (uses letters)
 
 };
 

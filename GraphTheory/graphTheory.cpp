@@ -38,11 +38,28 @@ void graphTheory::Gfill() {
 	}
 } // Fills all the vertices
 
-void graphTheory::Dfind(string G) {
-	cout << "Hello Gracen";
+int graphTheory::Dfind(string G) {
+	int count = 0;
+	int numDegrees = 0;
+	
+	for (int x = 0; x <= Glength - 1; x++) {
+		if (Gvert[x] == G) {
+			count = x;
+		}
+	}
+	for (int x = 0; x <= Glength - 1; x++) {
+		if (Vdegrees[count] > 0) {
+			numDegrees++;
+			count += Glength;
+		}
+		else {
+			count += Glength;
+		}
+	}
+	return numDegrees;
 } // Finds a vertice and its degree
 
-void graphTheory::DfindAll() {
+void graphTheory::OutputMatrixN() {
 	int countOne = 0;
 	int countTwo = 0;
 	int Yarray = 0;
@@ -65,6 +82,29 @@ void graphTheory::DfindAll() {
 		cout << Vdegrees[x] << " ";
 		countOne++;
 	}
-
 } // Find all the vertices
 
+void graphTheory::OutputMatrixA() {
+	int countOne = 0;
+	int countTwo = 0; // Not needed but is present for extra functionality
+	int tempGlength = 0;
+
+	cout << "| ";
+	for (int x = 0; x <= Glength - 1; x++) {
+		cout << Gvert[x] << " ";
+	}
+	cout << endl;
+	for (int x = 0; x <= Glength * Glength - 1; x++) {
+		if (countOne > Glength - 1) {
+			cout << endl;
+			countTwo++;
+			countOne = 0;
+		}
+		if (countOne == 0) {
+			cout << Gvert[tempGlength] << " ";
+			tempGlength++;
+		}
+		cout << Vdegrees[x] << " ";
+		countOne++;
+	}
+} // Find all the vertices
